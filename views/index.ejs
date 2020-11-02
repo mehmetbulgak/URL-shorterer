@@ -1,39 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <title>Document</title>
+  <title>URL_shortener</title>
+  <link rel="stylesheet" href="../assets/main.css">
+  <link rel="icon" href="../assets/logo.png">
 </head>
+
 <body>
   <div class="container">
-    <h1>URL Shrinker</h1>
-    <form action="/shortUrls" method="POST" class="my-4 form-inline">
-      <label for="fullUrl" class="sr-only">Url</label>
-      <input required placeholder="Url" type="url" name="fullUrl" id="fullUrl" class="form-control col mr-2">
-      <button class="btn btn-success" type="submit">Shrink</button>
-    </form>
-    
-    <table class="table table-striped table-responsive">
-      <thead>
-        <tr>
-          <th>Full URL</th>
-          <th>Short URL</th>
-          <th>Clicks</th>
-        </tr>
-      </thead>
-      <tbody>
+    <nav>
+      <h1>URL_shortener</h1>
+    </nav>
+
+    <div class="content-header">
+      <div class="content-header-left">
+        <h2>
+          More than just
+          <br>
+          shorter links
+        </h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          Recusandae saepe modi ullam delectus vitae.
+          Necessitatibus alias sunt incidunt odio molestias.</p>
+      </div>
+      <div class="content-header-right">
+        <img src="../assets/working.svg" width="500px" alt="">
+      </div>
+    </div>
+
+    <div class="short-input">
+      <form action="/shortUrls" method="POST">
+        <input required placeholder="Shorten a link here..." type="url" name="fullUrl" id="fullUrl">
+        <button type="submit">Shorten It!</button>
+      </form>
+    </div>
+
+    <div class="results">
+      <div class="results-one">
         <% shortUrls.forEach(shortUrl => { %>
-          <tr>
-            <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
-            <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
-            <td><%= shortUrl.clicks %></td>
-          </tr>
+        <p>Full URL</p>
+        <a href="<%= shortUrl.full %>"><%= shortUrl.full %></a>
         <% }) %>
-      </tbody>
-    </table>
+      </div>
+
+      <div class="results-two">
+        <% shortUrls.forEach(shortUrl => { %>
+        <p>Short URL</p>
+        <a href="<%= shortUrl.short %>"><%= shortUrl.short %></a>
+        <% }) %>
+      </div>
+    </div>
   </div>
 </body>
+
 </html>
